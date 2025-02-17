@@ -23,4 +23,10 @@ jobs:
         buildcache: true  # Configure oci://ghcr.io/spack/github-actions-buildcache
         color: true       # Force color output (SPACK_COLOR=always)
         path: spack       # Where to clone Spack
-    - run: spack install python
+    - run: spack -e . install
+    
+    - name: Run
+      shell: spack-bash
+      run: |
+        spack env activate .
+        python3 -c 'print("hello world")'
