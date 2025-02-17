@@ -1,0 +1,19 @@
+# This is a Spack Environment file.
+#
+# It describes a set of packages to be installed, along with
+# configuration settings.
+spack:
+  # add package specs to the `specs` list
+  specs:
+  - python@3.10.0
+  - py-numpy
+  - py-matplotlib
+  view: true
+  concretizer:
+    unify: true
+  mirrors:
+    container-registry:
+      url: oci://hub.docker.com/roussman/pytudes_img
+      access_pair:
+      - roussman
+      - dckr_pat_ZVaKGzvejKwYHfi7mt0vVVFfE24
