@@ -16,17 +16,16 @@ jobs:
     #    REPO_DIR: /tmp
     #    NOTEBOOK_USER: roussman
     
-    - name: Set up Spack
-      uses: spack/setup-spack@v2
-      with:
-        ref: develop      # Spack version (examples: develop, releases/v0.23)
-        buildcache: true  # Configure oci://ghcr.io/spack/github-actions-buildcache
-        color: true       # Force color output (SPACK_COLOR=always)
-        path: spack       # Where to clone Spack
-    - run: spack -e . install
+   # - name: Set up Spack
+   #   uses: spack/setup-spack@v2
+   #   with:
+   #     ref: develop      # Spack version (examples: develop, releases/v0.23)
+   #     buildcache: true  # Configure oci://ghcr.io/spack/github-actions-buildcache
+   #     color: true       # Force color output (SPACK_COLOR=always)
+   #     path: spack       # Where to clone Spack
+   # - run: spack -e . install
     
     - name: Create Dockerfile
-      shell: spack-bash
       run: spack containerize > Dockerfile'
 
     - name: login to docker hub
