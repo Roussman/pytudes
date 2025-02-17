@@ -11,9 +11,5 @@ spack:
   view: true
   concretizer:
     unify: true
-  mirrors:
-    container-registry:
-      url: oci://hub.docker.com/roussman/pytudes_img
-      access_pair:
-      - roussman
-      - dckr_pat_ZVaKGzvejKwYHfi7mt0vVVFfE24
+  container:
+    format: singularity
