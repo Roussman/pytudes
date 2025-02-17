@@ -25,8 +25,22 @@ jobs:
         path: spack       # Where to clone Spack
     - run: spack -e . install
     
-    - name: Run
+    - name: Create Dockerfile
       shell: spack-bash
+      run: spack containerize > Dockerfile'
+
+    - name: login to docker hub
+      id: docker-hub
+      env:
+        username: ${{secrets.DOCKERHUB_USERNAME}}
+        password: ${{secrets.DOCKERHUB_PASSWORD}}
       run: |
-        spack env activate .
-        python3 -c 'print("hello world")'
+        docker login -u $username -p $password 
+    - name: build the docker image
+      id: build-docker-image
+      run: |
+        ls -la 
+        docker build . -f Dockerfile -t dhruvin30/pytudes:latest
+    - name: push the docker image
+      id: push-docker-image
+      run: docker push ${{secrets.DOCKERHUB_USERNAME}}/pytudes:latest
