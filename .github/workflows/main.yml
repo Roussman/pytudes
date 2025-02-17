@@ -8,10 +8,19 @@ jobs:
     - name: checkout files in repo
       uses: actions/checkout@main
 
-    - name: update jupyter dependencies with repo2docker
-      uses: jupyterhub/repo2docker-action@master
+    #- name: update jupyter dependencies with repo2docker
+    #  uses: jupyterhub/repo2docker-action@master
+    #  with:
+    #    DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+    #    DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+    #    REPO_DIR: /tmp
+    #    NOTEBOOK_USER: roussman
+    
+    - name: Set up Spack
+      uses: spack/setup-spack@v2
       with:
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-        REPO_DIR: /tmp
-        NOTEBOOK_USER: roussman
+        ref: develop      # Spack version (examples: develop, releases/v0.23)
+        buildcache: true  # Configure oci://ghcr.io/spack/github-actions-buildcache
+        color: true       # Force color output (SPACK_COLOR=always)
+        path: spack       # Where to clone Spack
+    - run: spack install python
