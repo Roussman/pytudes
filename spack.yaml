@@ -11,5 +11,3 @@ spack:
   view: true
   concretizer:
     unify: true
-  container:
-    format: singularity
