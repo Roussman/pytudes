@@ -9,8 +9,9 @@ jobs:
       uses: actions/checkout@main
 
     - name: update jupyter dependencies with repo2docker
-      uses: roussman/repo2docker-action@master
+      uses: jupyterhub/repo2docker-action@master
       with:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         REPO_DIR: /tmp
+        FORCE_REPO2DOCKER_VERSION: git+https://github.com/Roussman/repo2docker/@569dbba
