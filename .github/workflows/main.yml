@@ -14,3 +14,4 @@ jobs:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         FORCE_REPO2DOCKER_VERSION: git+https://github.com/Roussman/repo2docker/@main
+        NOTEBOOK_USER: roussman
