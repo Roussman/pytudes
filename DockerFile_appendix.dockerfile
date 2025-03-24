@@ -1,1 +1,1 @@
-RUN chmod 777 ${HOME}
+RUN chmod 755 ${HOME}
